@@ -1,0 +1,38 @@
+{
+  "name": "com.amaan.googlesheetsfetcher",
+  "version": "1.0.0",
+  "displayName": "GoogleSheetsFetcher",
+  "description": "A modular, UniTask-powered Google Sheets fetching and syncing toolkit for Unity supporting Public URLs, Google API Keys, Apps Script Secret URLs, batch downloading, reusable generic SheetSyncEditor<T>, and a zero-dependency [TableView] inspector attribute.",
+  "unity": "2022.3",
+  "license": "MIT",
+  "author": {
+    "name": "Amaan",
+    "email": "imamaan123@gmail.com",
+    "url": "https://github.com/Amaan12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Amaan12/GoogleSheetsFetcher.git"
+  },
+  "keywords": [
+    "google sheets",
+    "spreadsheet",
+    "fetcher",
+    "csv",
+    "tsv",
+    "sync",
+    "tableview",
+    "editor",
+    "tools"
+  ],
+  "dependencies": {
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
+  },
+  "samples": [
+    {
+      "displayName": "Google Sheets Fetcher Sample",
+      "description": "Sample GoogleSheetsRegistrySO and SampleSheetDataSO with SheetSyncEditor and [TableView].",
+      "path": "Samples~/Sample"
+    }
+  ]
+}

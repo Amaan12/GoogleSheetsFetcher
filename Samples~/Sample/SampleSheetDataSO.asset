@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4e93c28d1a4f659c03e84b2917a6d1, type: 3}
+  m_Name: SampleSheetDataSO
+  m_EditorClassIdentifier: 
+  sheetConfig:
+    sheetName: SampleLocalizationSheet
+    authMethod: 0
+    urlOrId: https://docs.google.com/spreadsheets/d/1olneD8WjrGBj6i2xjKTpuxs317dc6wI4uONzNdOD94I/edit?gid=0#gid=0
+    apiKeyOrSecret: 
+    format: 0
+    tabIndex: 0
+  rows:
+  - id: Menu.Play
+    english: Play
+    french: Jouer
+  - id: Menu.Resume
+    english: Resume
+    french: Reprendre
+  - id: Menu.Continue
+    english: Continue
+    french: Continuer
+  - id: Menu.Reload
+    english: Restart
+    french: "Red\xE9marrer"
+  - id: Menu.NextLevel
+    english: Next Level
+    french: Niveau Suivant
+  - id: Menu.MainMenu
+    english: Main Menu
+    french: Menu Principal
+  - id: Menu.Options
+    english: Options
+    french: Options
+  - id: Menu.Credits
+    english: Credits
+    french: "Cr\xE9dits"
+  - id: Menu.Quit
+    english: Quit
+    french: Quitter
+  - id: Menu.PlayerName
+    english: Player Name
+    french: Nom du Joueur
+  - id: Menu.Back
+    english: Back
+    french: Retour
+  - id: MainMenu.Title
+    english: Main Menu
+    french: Menu Principal
+  - id: Settings.Title
+    english: Settings
+    french: "Param\xE8tres"
+  - id: Settings.Audio
+    english: Audio
+    french: Audio
+  - id: Settings.Display
+    english: Display
+    french: Affichage
+  - id: Settings.Gameplay
+    english: Gameplay
+    french: "Jouabilit\xE9"
+  - id: Settings.MasterVolume
+    english: Master Volume
+    french: Volume Principal
+  - id: Settings.MusicVolume
+    english: Music Volume
+    french: Volume Musique
+  - id: Settings.SFXVolume
+    english: SFX Volume
+    french: Volume Effets
+  - id: Settings.Resolution
+    english: Resolution
+    french: "R\xE9solution"
+  - id: Settings.Fullscreen
+    english: Fullscreen
+    french: "Plein \xC9cran"
+  - id: Settings.gameSpeed
+    english: Speed
+    french: Vitesse
+  - id: Credits.Title
+    english: Credits
+    french: "Cr\xE9dits"
+  - id: Credits.Design
+    english: Design
+    french: Conception
+  - id: Credits.Programming
+    english: Programming
+    french: Programmation
+  - id: Credits.Art
+    english: Art
+    french: Art
+  - id: LevelSelector.Title
+    english: Level Selector
+    french: "S\xE9lecteur de Niveau"
+  - id: PauseMenu.Title
+    english: Paused
+    french: En Pause
+  - id: WinMenu.Title
+    english: You Won!
+    french: "Vous Avez Gagn\xE9!"
+  - id: WinMenu.LevelComplete
+    english: Level Complete
+    french: "Niveau Termin\xE9"
+  - id: LoseMenu.Title
+    english: You Lost!
+    french: Vous Avez Perdu!
+  - id: Loader.Loading
+    english: Loading
+    french: Chargement
+  - id: Loader.TipText
+    english: Tips!
+    french: Astuces!
+  - id: Loader.LoadingTips1
+    english: 1
+    french: 1
+  - id: Loader.LoadingTips2
+    english: 2
+    french: 2
+  - id: Loader.LoadingTips3
+    english: 3
+    french: 3
+  - id: Loader.LoadingTips4
+    english: 4
+    french: 4
+  - id: Loader.LoadingTips5
+    english: 5
+    french: 5
+  - id: Loader.LoadingTips6
+    english: 6
+    french: 6
+  - id: Loader.LoadingTips7
+    english: 7
+    french: 7
+  - id: Loader.LoadingTips8
+    english: 8
+    french: 8
+  - id: Loader.LoadingTips9
+    english: 9
+    french: 9
+  - id: Loader.LoadingTips10
+    english: 10
+    french: 10
