@@ -1,12 +1,32 @@
-# Google Sheets Fetcher
+# GoogleSheetsFetcher for Unity (`com.amaan.googlesheetsfetcher`)
 
-A zero-dependency (UniTask-powered) Google Sheets fetching system for Unity Editor supporting:
+A modular, UniTask-powered Google Sheets fetching and syncing toolkit for Unity Editor supporting Public URLs, Google Cloud API Keys, Apps Script Secret URLs, parallel batch downloading, a reusable generic `SheetSyncEditor<T>`, and a zero-dependency `[TableView]` inspector attribute.
+
+## Installation
+
+### Prerequisites
+Make sure **UniTask** is installed in your project before adding this package. In Package Manager, click `+`, select **Add package from git URL...**, and enter:
+```
+https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask
+```
+
+### Install GoogleSheetsFetcher
+In Unity Package Manager (`Window > Package Manager`), click `+`, select **Add package from git URL...**, and enter:
+```
+https://github.com/Amaan12/GoogleSheetsFetcher.git
+```
+
+---
+
+## Features
+
 - **Auth Modes**: `PublicUrl` (Share link or ID), `ApiKey` (Google Cloud API Key), and `AppsScriptSecretUrl` (Web App secret link).
 - **Formats**: `TSV`, `CSV`, `TXT_TSV`, `TXT_CSV`, `JSON`, `HTML`, `XLSX`, `PDF`.
 - **0-Based Tab Index (`0, 1, 2...`)**: Automatically resolves tab position (`0` = first tab, `1` = second tab, etc.) across all auth modes.
 - **Standalone Batch Registry (`GoogleSheetsRegistrySO`)**: Batch downloads multiple sheet configs in parallel into a configurable folder (defaults to `Assets/Samples/GoogleSheetsFetcher/v1.0.0/Sheets`) with an Inspector folder browser.
-- **Generic Reusable Editor (`ISheetSyncable` + `SheetSyncEditor<T>`)**: Adds a `[Fetch & Sync Sheet]` button and a `[⚙]` gear toggle to any `ScriptableObject` or `MonoBehaviour` Inspector while keeping URLs hidden by default and stripped from builds.
-- **Global Parallel Sync (`Tools/Amaan12/GoogleSheetsFetcher/SyncAllEditors`)**: Triggers every `SheetSyncEditor<T>` (SOs & MonoBehaviours) and `GoogleSheetsRegistrySOEditor` across the project in one parallel batch.
+- **Generic Reusable Editor (`ISheetSyncable` + `SheetSyncEditor<T>`)**: Adds a compact `[↻ Sync Sheet] [⚙]` toolbar to any `ScriptableObject` or `MonoBehaviour` Inspector while keeping URLs hidden by default and stripped from builds.
+- **`[TableView]` Attribute**: Renders any `List<T>` or `T[]` of serializable structs/classes as a multi-column spreadsheet table in the Inspector (`[TableView(readOnly: false, showIndex: true, maxHeight: 0f)]`).
+- **Global Parallel Sync (`Tools/Amaan12/GoogleSheetsFetcher/SyncAllEditors`)**: Triggers every `SheetSyncEditor<T>` (SOs & MonoBehaviours) across the project in one parallel batch.
 
 ---
 
@@ -14,8 +34,17 @@ A zero-dependency (UniTask-powered) Google Sheets fetching system for Unity Edit
 
 ### Step A — Implement `ISheetSyncable` on your SO (or MonoBehaviour)
 ```csharp
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using GoogleSheetsFetcher;
+
+[Serializable]
+public struct ItemRow
+{
+    public string id;
+    public string name;
+}
 
 [CreateAssetMenu(menuName = "Sample/ItemDatabase")]
 public class ItemDatabaseSO : ScriptableObject, ISheetSyncable
@@ -25,7 +54,8 @@ public class ItemDatabaseSO : ScriptableObject, ISheetSyncable
     public SheetConfig SheetConfig => sheetConfig;
 #endif
 
-    public string[] parsedLines;
+    [TableView]
+    public List<ItemRow> items = new List<ItemRow>();
 }
 ```
 
@@ -40,16 +70,11 @@ public class ItemDatabaseSOEditor : SheetSyncEditor<ItemDatabaseSO>
 {
     protected override void OnSheetFetched(ItemDatabaseSO targetObject, string content)
     {
-        // Custom parsing and assignment logic for this specific SO:
-        targetObject.parsedLines = content.Split('\n');
+        // Custom parsing and assignment logic for this specific SO
     }
 }
 #endif
 ```
-
-In the Inspector of `ItemDatabaseSO`:
-- Click **`[⚙]`** to reveal/edit the `SheetConfig` (Auth Method, URL/ID, Format, Tab Index).
-- Click **`[Fetch & Sync Sheet]`** to fetch, parse, and save.
 
 ---
 
@@ -57,7 +82,7 @@ In the Inspector of `ItemDatabaseSO`:
 
 1. Right-click in the Project window → **`Create > Google Sheets Fetcher > Sheet Registry`**.
 2. Choose an output folder using **`Browse...`** (defaults to `Assets/Samples/GoogleSheetsFetcher/v1.0.0/Sheets`).
-3. Add multiple `SheetConfig` entries and click **`Fetch & Save All Sheets`** (or run **`Tools/Amaan12/GoogleSheetsFetcher/SyncAllEditors`**).
+3. Add multiple `SheetConfig` entries and click **`Fetch & Save All Sheets`**.
 
 ---
 
